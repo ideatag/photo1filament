@@ -3,9 +3,9 @@
 namespace App\Filament\Resources\PhotoResource\Pages;
 
 use App\Filament\Resources\PhotoResource;
-use Filament\Actions;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Resources\Pages\CreateRecord;
+use Illuminate\Support\Facades\Auth;
 
 class CreatePhoto extends CreateRecord
 {
@@ -17,7 +17,7 @@ class CreatePhoto extends CreateRecord
             $model = static::getModel()::create([
                 'path' => $image,
                 'album_id' => $data['album_id'],
-                'user_id' => auth()->id()
+                'user_id' => Auth::id()
             ]);
         }
         return $model;

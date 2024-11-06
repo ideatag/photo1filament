@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\AlbumResource\Pages;
-use App\Filament\Resources\AlbumResource\RelationManagers;
 use App\Models\Album;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -11,7 +10,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 
 class AlbumResource extends Resource
 {
@@ -78,6 +77,6 @@ class AlbumResource extends Resource
 
     public static function getEloquentQuery(): Builder
     {
-        return parent::getEloquentQuery()->where('user_id', auth()->id());
+        return parent::getEloquentQuery()->where('user_id', Auth::id());
     }
 }

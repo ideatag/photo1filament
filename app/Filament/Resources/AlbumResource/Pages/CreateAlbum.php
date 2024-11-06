@@ -3,8 +3,8 @@
 namespace App\Filament\Resources\AlbumResource\Pages;
 
 use App\Filament\Resources\AlbumResource;
-use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
+use Illuminate\Support\Facades\Auth;
 
 class CreateAlbum extends CreateRecord
 {
@@ -12,7 +12,7 @@ class CreateAlbum extends CreateRecord
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        $data['user_id'] = auth()->id();
+        $data['user_id'] = Auth::id();
         return $data;
     }
 
